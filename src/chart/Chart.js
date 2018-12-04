@@ -32,7 +32,7 @@ export default function Chart({ data, style, zoom, setZoom, setChartViewModel })
 
   function wheelHandler(e) {
     const min = 2;
-    const max = 20;
+    const max = 13;
     let newZoom = zoom - e.deltaY;
     if (newZoom < min) newZoom = min;
     if (newZoom > max) newZoom = max;
