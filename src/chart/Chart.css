@@ -1,0 +1,8 @@
+.Chart {
+  display: flex;
+  flex-grow: 1;
+}
+
+.Chart-canvas {
+  flex-grow: 1;
+}
