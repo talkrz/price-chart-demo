@@ -1,1 +1,1 @@
-# price-chart live demo
+# price-chart library demo
