@@ -38,7 +38,7 @@ export default function Chart({ data, style, zoom, setZoom, setChartViewModel })
     let newZoom = zoom - e.deltaY;
     if (newZoom < min) newZoom = min;
     if (newZoom > max) newZoom = max;
-    setZoom(newZoom);
+    setZoom(Math.round(newZoom));
   }
 
   function prepareChart() {
