@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "talkrz.github.io/price-chart-demo/precache-manifest.4764349591693a220cbd701cdacbbf97.js"
+  "/price-chart-demo/precache-manifest.1e6bdbbb0d5dddd8a9d1ee00f65f8c7c.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("talkrz.github.io/price-chart-demo/index.html", {
+workbox.routing.registerNavigationRoute("/price-chart-demo/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
