@@ -33,18 +33,30 @@ export default function ChartSidebar({ chartViewModel, zoom, setZoom, theme, set
           </tbody>
         </table>
         <div className={`ChartSidebar-control ChartSidebar-control-${theme}`}>
-          <label htmlFor="theme" className="ChartSidebar-label">
+          <p className="ChartSidebar-label">
             Theme:
-          </label>
-          <select
-            className="ChartSidebar-select"
-            id="theme"
-            value={theme}
-            onChange={(e) => { setTheme(e.target.value) }}
-          >
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-          </select>
+          </p>
+
+          <div className="ChartSidebar-theme">
+            <label>
+              <input
+                type="radio"
+                value="light"
+                checked={theme === "light"}
+                onChange={(e) => { setTheme(e.target.value) }}
+              />
+              Light
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="dark"
+                checked={theme === "dark"}
+                onChange={(e) => { setTheme(e.target.value) }}
+              />
+              Dark
+            </label>
+          </div>
         </div>
         <div className={`ChartSidebar-control ChartSidebar-control-${theme}`}>
           <label htmlFor="zoom" className="ChartSidebar-label">

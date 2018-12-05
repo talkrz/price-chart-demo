@@ -18,22 +18,33 @@
   margin-bottom: 10px;
 }
 
-.ChartSidebar-control label {
+.ChartSidebar-label {
   font-size: 16px;
   font-weight: lighter;
-  display: block;
+  margin: 5px 0;
 }
 
-.ChartSidebar-control input, .ChartSidebar-control select {
+.ChartSidebar-control input {
   display: block;
   padding: 2px 8px;
   font-size: 14px;
 }
 
-.ChartSidebar-control-dark input, .ChartSidebar-control-dark select {
+.ChartSidebar-control-dark input {
   color: #ddd;
   background: #000;
   border: 1px solid #444;
+}
+
+.ChartSidebar-theme label {
+  font-size: 13px;
+  font-weight: lighter;
+  display: block;
+}
+
+.ChartSidebar-theme input {
+  display: inline;
+  margin-right: 5px;
 }
 
 .ChartSidebar-price {
