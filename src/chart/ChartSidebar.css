@@ -5,7 +5,7 @@
 
 @media (max-width: 800px) {
   .ChartSidebar  {
-    height: 50%;
+    width: 100%;
   }
 }
 

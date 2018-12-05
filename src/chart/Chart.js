@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   initChart,
   drawChart,
+  drawCrosshair,
   setCursorPosition,
   getChartViewModel,
 } from '@talkrz/price-chart';
@@ -10,6 +11,7 @@ import './Chart.css';
 export default function Chart({ data, style, zoom, setZoom, setChartViewModel }) {
   const contentRef = useRef();
   const canvasRef = useRef();
+  const canvasCrosshairRef = useRef();
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [devicePixelRatio] = useState(window.devicePixelRatio);
@@ -27,7 +29,7 @@ export default function Chart({ data, style, zoom, setZoom, setChartViewModel })
     const x = rect.left;
     const y = rect.top;
     setCursorPosition(event.clientX - x, event.clientY - y);
-    window.requestAnimationFrame(drawChart);
+    window.requestAnimationFrame(drawCrosshair);
   }
 
   function wheelHandler(e) {
@@ -40,11 +42,11 @@ export default function Chart({ data, style, zoom, setZoom, setChartViewModel })
   }
 
   function prepareChart() {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-
     initChart(
-      ctx,
+      {
+        base: canvasRef.current.getContext("2d"),
+        crosshair: canvasCrosshairRef.current.getContext("2d"),
+      },
       data,
       width,
       height,
@@ -87,6 +89,13 @@ export default function Chart({ data, style, zoom, setZoom, setChartViewModel })
         height={height * devicePixelRatio}
         ref={canvasRef}
         className="Chart-canvas"
+        style={{ width, height }}
+      />
+      <canvas
+        width={width * devicePixelRatio}
+        height={height * devicePixelRatio}
+        ref={canvasCrosshairRef}
+        className="Chart-canvas-crosshair"
         style={{ width, height }}
         onMouseMove={mouseMoveHandler}
         onWheel={wheelHandler}

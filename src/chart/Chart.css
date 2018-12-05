@@ -1,8 +1,18 @@
 .Chart {
-  display: flex;
+  position: relative;
   flex-grow: 1;
 }
 
 .Chart-canvas {
-  flex-grow: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.Chart-canvas-crosshair {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
