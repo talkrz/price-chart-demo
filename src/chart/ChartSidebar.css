@@ -1,12 +1,6 @@
 .ChartSidebar {
   padding: 15px;
-  width: 20%;
-}
-
-@media (max-width: 800px) {
-  .ChartSidebar  {
-    width: 100%;
-  }
+  min-width: 20%;
 }
 
 .ChartSidebar-dark {

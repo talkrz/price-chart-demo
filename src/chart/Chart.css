@@ -1,6 +1,7 @@
 .Chart {
   position: relative;
   flex-grow: 1;
+  min-height: 250px;
 }
 
 .Chart-canvas {
