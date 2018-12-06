@@ -1,13 +1,13 @@
 {
   "main.css": "/price-chart-demo/static/css/main.6bfb3041.chunk.css",
-  "main.js": "/price-chart-demo/static/js/main.8951a85d.chunk.js",
-  "main.js.map": "/price-chart-demo/static/js/main.8951a85d.chunk.js.map",
-  "static/js/1.a21c5ca7.chunk.js": "/price-chart-demo/static/js/1.a21c5ca7.chunk.js",
-  "static/js/1.a21c5ca7.chunk.js.map": "/price-chart-demo/static/js/1.a21c5ca7.chunk.js.map",
+  "main.js": "/price-chart-demo/static/js/main.1cac093e.chunk.js",
+  "main.js.map": "/price-chart-demo/static/js/main.1cac093e.chunk.js.map",
+  "static/js/1.8ccae841.chunk.js": "/price-chart-demo/static/js/1.8ccae841.chunk.js",
+  "static/js/1.8ccae841.chunk.js.map": "/price-chart-demo/static/js/1.8ccae841.chunk.js.map",
   "runtime~main.js": "/price-chart-demo/static/js/runtime~main.dccd3c2b.js",
   "runtime~main.js.map": "/price-chart-demo/static/js/runtime~main.dccd3c2b.js.map",
   "static/css/main.6bfb3041.chunk.css.map": "/price-chart-demo/static/css/main.6bfb3041.chunk.css.map",
   "index.html": "/price-chart-demo/index.html",
-  "precache-manifest.5ecfb2a2ff4bfb6528b8444531cde28e.js": "/price-chart-demo/precache-manifest.5ecfb2a2ff4bfb6528b8444531cde28e.js",
+  "precache-manifest.9b78ebc8498c25a39e035b07df4d94af.js": "/price-chart-demo/precache-manifest.9b78ebc8498c25a39e035b07df4d94af.js",
   "service-worker.js": "/price-chart-demo/service-worker.js"
 }
