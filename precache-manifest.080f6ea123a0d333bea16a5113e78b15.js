@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/price-chart-demo/static/js/runtime~main.dccd3c2b.js"
   },
   {
-    "revision": "1cac093ea3dcb51005b0",
-    "url": "/price-chart-demo/static/js/main.1cac093e.chunk.js"
+    "revision": "52fd08356ca6d2dea10e",
+    "url": "/price-chart-demo/static/js/main.52fd0835.chunk.js"
   },
   {
     "revision": "8ccae841e47403ced4a6",
     "url": "/price-chart-demo/static/js/1.8ccae841.chunk.js"
   },
   {
-    "revision": "1cac093ea3dcb51005b0",
-    "url": "/price-chart-demo/static/css/main.6bfb3041.chunk.css"
+    "revision": "52fd08356ca6d2dea10e",
+    "url": "/price-chart-demo/static/css/main.36f3fc77.chunk.css"
   },
   {
-    "revision": "ea83ad9f4da09b9d746bf2643303ee1c",
+    "revision": "065fafb0c9b04fe12bf001658062ca34",
     "url": "/price-chart-demo/index.html"
   }
 ];
