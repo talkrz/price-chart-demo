@@ -63,7 +63,8 @@ export default function ChartSidebar({ chartViewModel, zoom, setZoom, theme, set
             Zoom:
           </label>
           <input
-            disabled={true} type="text" value={zoom}
+            type="text"
+            value={zoom}
             onChange={e => setZoom(e.target.value)} />
         </div>
       </div>

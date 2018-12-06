@@ -33,15 +33,16 @@ export default function Chart({ data, style, zoom, setZoom, setChartViewModel })
   }
 
   function wheelHandler(e) {
-    const min = 2;
-    const max = 13;
     let newZoom = zoom - e.deltaY;
-    if (newZoom < min) newZoom = min;
-    if (newZoom > max) newZoom = max;
     setZoom(Math.round(newZoom));
   }
 
   function prepareChart() {
+    const min = 2;
+    const max = 13;
+    if (zoom < min) zoom = min;
+    if (zoom > max) zoom = max;
+    setZoom(zoom);
     initChart(
       {
         base: canvasRef.current.getContext("2d"),
