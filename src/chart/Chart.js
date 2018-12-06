@@ -42,7 +42,7 @@ export default function Chart({ data, style, zoom, setZoom, setChartViewModel })
     const max = 13;
     if (zoom < min) zoom = min;
     if (zoom > max) zoom = max;
-    setZoom(zoom);
+
     initChart(
       {
         base: canvasRef.current.getContext("2d"),
