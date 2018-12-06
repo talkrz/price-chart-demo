@@ -67,7 +67,7 @@ export default function Chart({ data, style, zoom, setZoom, setChartViewModel })
         padding: style && style.padding ? style.padding : 5,
         margin: style && style.margin ? style.margin : [10, 10, 10, 10],
         candlestickHeight: 0.8,
-        scaleWidth: 50,
+        scaleWidth: 38,
       },
       'en',
     );
