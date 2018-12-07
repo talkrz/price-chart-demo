@@ -8,6 +8,15 @@
   color: #aaa;
 }
 
+.ChartSidebar h3 {
+  font-weight: lighter;
+  font-size: 16px;
+}
+
+.ChartSidebar-tips {
+  font-weight: lighter;
+}
+
 .ChartSidebar-control {
   margin-bottom: 10px;
 }

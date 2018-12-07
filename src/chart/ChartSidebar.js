@@ -68,7 +68,11 @@ export default function ChartSidebar({ chartViewModel, zoom, setZoom, theme, set
             onChange={e => setZoom(e.target.value)} />
         </div>
       </div>
-      <p>Tip: scroll over the chart to zoom</p>
+      <h3>Tips:</h3>
+      <p>
+        Scroll over the chart to zoom<br />
+        Move chart by dragging with mouse
+      </p>
       <div className={`ChartSidebar-gihub ChartSidebar-gihub-${theme}`}>
         <p>See the code on GitHub:</p>
         <a href="https://github.com/talkrz/price-chart" target="_blank" rel="noopener noreferrer">
