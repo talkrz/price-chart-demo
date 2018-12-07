@@ -6,7 +6,7 @@
 }
 
 .ChartBasicView-container {
-  flex-grow: 1;
+  display: flex;
   width: 600px;
   height: 400px;
 }

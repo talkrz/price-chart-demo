@@ -1,5 +1,6 @@
 import React from 'react';
-import ChartContainer from './chart/ChartContainer';
+import Chart from './chartBasic/Chart';
+import getData from './data/getData';
 import './ChartBasicView.css';
 
 const style = {
@@ -21,12 +22,13 @@ const style = {
 };
 
 export default function ChartBasicView() {
-
   return (
     <div className="ChartBasicView">
       <div className="ChartBasicView-container">
-        <ChartContainer
-          zoom={7} style={style} setChartViewModel={() => { /* we do nothing with this */}}
+        <Chart
+          data={getData()}
+          zoom={7}
+          style={style}
         />
       </div>
     </div>
