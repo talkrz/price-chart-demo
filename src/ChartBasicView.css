@@ -1,0 +1,12 @@
+.ChartBasicView {
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ChartBasicView-container {
+  flex-grow: 1;
+  width: 600px;
+  height: 400px;
+}

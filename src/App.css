@@ -35,6 +35,13 @@
   border-bottom: 1px solid #222;
 }
 
+.App-header-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
 .App-content {
   padding: 0;
   flex-grow: 1;
