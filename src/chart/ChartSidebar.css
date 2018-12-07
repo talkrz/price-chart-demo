@@ -1,6 +1,7 @@
 .ChartSidebar {
   padding: 15px;
   min-width: 20%;
+  font-size: 15px;
 }
 
 .ChartSidebar-dark {
@@ -10,11 +11,7 @@
 
 .ChartSidebar h3 {
   font-weight: lighter;
-  font-size: 16px;
-}
-
-.ChartSidebar-tips {
-  font-weight: lighter;
+  font-size: 18px;
 }
 
 .ChartSidebar-control {
@@ -22,7 +19,7 @@
 }
 
 .ChartSidebar-label {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: lighter;
   margin: 5px 0;
 }
