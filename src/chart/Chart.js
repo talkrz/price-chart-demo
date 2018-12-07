@@ -1,49 +1,44 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
-  initChart,
-  drawChart,
-  drawCrosshair,
-  setCursorPosition,
-  getChartViewModel,
+  chartInit,
+  chartSetCursor,
+  chartDraw,
+  chartDrawCrosshair,
+  chartGetViewModel,
 } from '@talkrz/price-chart';
+import useDimensions from '../hooks/useDimensions';
+
+import mouseHandlerZoom from './mouseHandlerZoom';
+import useMoveChart from './useMoveChart';
+import mouseHandlerCrosshair from './mouseHandlerCrosshair';
+
 import './Chart.css';
 
 export default function Chart({ data, style, zoom, setZoom, setChartViewModel }) {
   const contentRef = useRef();
   const canvasRef = useRef();
   const canvasCrosshairRef = useRef();
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
+  // hook that handles updating width and height according to current dimensions
+  // supporting window resize
+  const [width, height] = useDimensions(contentRef);
   const [devicePixelRatio] = useState(window.devicePixelRatio);
+  const [locale] = useState('en');
 
+  // prepare handlers for mouse interactions
+  const wheelHandler = mouseHandlerZoom(zoom, setZoom);
+  const crosshairMoveHandler = mouseHandlerCrosshair(
+    canvasRef,
+    chartDrawCrosshair,
+    chartSetCursor,
+  );
+  const [chartOffset, chartMoveHandlers] = useMoveChart(canvasRef, zoom);
+
+  // chart drawing effect
   useEffect(() => {
-    setWidth(contentRef.current.offsetWidth);
-  }, [])
+    if (!data.length) return;
 
-  useEffect(() => {
-    setHeight(contentRef.current.offsetHeight);
-  }, [])
-
-  function mouseMoveHandler(event) {
-    const rect = canvasRef.current.getBoundingClientRect();
-    const x = rect.left;
-    const y = rect.top;
-    setCursorPosition(event.clientX - x, event.clientY - y);
-    window.requestAnimationFrame(drawCrosshair);
-  }
-
-  function wheelHandler(e) {
-    let newZoom = zoom - e.deltaY;
-    setZoom(Math.round(newZoom));
-  }
-
-  function prepareChart() {
-    const min = 2;
-    const max = 13;
-    if (zoom < min) zoom = min;
-    if (zoom > max) zoom = max;
-
-    initChart(
+    // init chart view
+    chartInit(
       {
         base: canvasRef.current.getContext("2d"),
         crosshair: canvasCrosshairRef.current.getContext("2d"),
@@ -52,36 +47,18 @@ export default function Chart({ data, style, zoom, setZoom, setChartViewModel })
       width,
       height,
       devicePixelRatio,
-      {
-        stickLength: zoom,
-        stickMargin: style && style.stickMargin ? style.stickMargin : 2,
-        colorBackground: style && style.colorBackground ? style.colorBackground : '#fff',
-        colorBear: style && style.colorBear ? style.colorBear : '#ff4444',
-        colorBull: style && style.colorBull ? style.colorBull : '#000',
-        colorBearBorder: style && style.colorBearBorder ? style.colorBearBorder : '#ff4444',
-        colorBullBorder: style && style.colorBullBorder ? style.colorBullBorder : '#000',
-        colorGrid: style && style.colorGrid ? style.colorGrid : '#f4f4f4',
-        colorBorder: style && style.colorBorder ? style.colorBorder : '#e8e8e8',
-        colorScale: style && style.colorScale ? style.colorScale : '#666',
-        colorCrosshair: style && style.colorCrosshair ? style.colorCrosshair : '#ccc',
-        fontSize: style && style.fontSize ? style.fontSize : 14,
-        padding: style && style.padding ? style.padding : 5,
-        margin: style && style.margin ? style.margin : [10, 10, 10, 10],
-        candlestickHeight: 0.8,
-        scaleWidth: 38,
-      },
-      'en',
+      zoom,
+      chartOffset,
+      style,
+      locale,
     );
 
-    drawChart();
-  }
+    // draw chart on the canvas
+    chartDraw();
 
-  useEffect(() => {
-    if (data.length) {
-      prepareChart();
-      setChartViewModel(getChartViewModel());
-    }
-  }, [data.length, width, height, zoom, style])
+    // retrieve view model containing useful data about displayed chart
+    setChartViewModel(chartGetViewModel());
+  }, [data.length, width, height, zoom, style, chartOffset])
 
   return (
     <div className="Chart" ref={contentRef}>
@@ -98,8 +75,13 @@ export default function Chart({ data, style, zoom, setZoom, setChartViewModel })
         ref={canvasCrosshairRef}
         className="Chart-canvas-crosshair"
         style={{ width, height }}
-        onMouseMove={mouseMoveHandler}
+        onMouseMove={(e) => {
+          chartMoveHandlers.mouseMoveHandler(e);
+          crosshairMoveHandler(e);
+        }}
         onWheel={wheelHandler}
+        onMouseDown={chartMoveHandlers.mouseDownHanlder}
+        onMouseUp={chartMoveHandlers.mouseUpHandler}
       />
     </div>
   )

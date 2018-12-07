@@ -5,6 +5,7 @@ import './ChartView.css';
 
 const styles = {
   light: {
+    stickMargin: 2,
     colorBackground: '#fff',
     colorBear: '#ff4444',
     colorBull: '#fff',
@@ -14,8 +15,14 @@ const styles = {
     colorBorder: '#e8e8e8',
     colorScale: '#666',
     colorCrosshair: '#ccc',
+    fontSize: 14,
+    padding: 5,
+    margin: [10, 10, 10, 10],
+    candlestickHeight: 0.8,
+    scaleWidth: 38,
   },
   dark: {
+    stickMargin: 2,
     colorBackground: '#000',
     colorBear: '#aa2222',
     colorBull: '#000',
@@ -25,6 +32,11 @@ const styles = {
     colorBorder: '#333',
     colorScale: '#aaa',
     colorCrosshair: '#666',
+    fontSize: 14,
+    padding: 5,
+    margin: [10, 10, 10, 10],
+    candlestickHeight: 0.8,
+    scaleWidth: 38,
   },
 }
 
