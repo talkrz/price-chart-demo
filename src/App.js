@@ -7,7 +7,7 @@ export default function App() {
   const [theme, setTheme] = useState('light');
 
   // pseudo-routing ;)
-  const [view, setView] = useState('basic');
+  const [view, setView] = useState('advanced');
 
   return (
     <div className={`App App-${theme}`}>
