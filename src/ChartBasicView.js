@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Chart from './chartBasic/Chart';
 import getData from './data/getData';
 import './ChartBasicView.css';
@@ -21,7 +21,12 @@ const style = {
   scaleWidth: 38,
 };
 
-export default function ChartBasicView() {
+export default function ChartBasicView({ parentSetTheme }) {
+  // the basic example does not support themes, so set light
+  useEffect(() => {
+    parentSetTheme('light');
+  }, []);
+
   return (
     <div className="ChartBasicView">
       <div className="ChartBasicView-container">
