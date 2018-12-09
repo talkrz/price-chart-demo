@@ -70,6 +70,7 @@ export default function ChartView({ parentSetTheme }) {
   });
   const [zoom, setZoom] = useState(8);
   const [theme, setTheme] = useState('light');
+  const [cursorData, setCursorData] = useState([null, null]);
 
   useEffect(() => {
     parentSetTheme(theme)
@@ -78,10 +79,17 @@ export default function ChartView({ parentSetTheme }) {
   return (
     <>
       <div className="ChartView-chart-container">
-        <ChartContainer zoom={zoom} setZoom={setZoom} style={styles[theme]} setChartViewModel={setChartViewModel} />
+        <ChartContainer
+          zoom={zoom}
+          setZoom={setZoom}
+          style={styles[theme]}
+          setChartViewModel={setChartViewModel}
+          setCursorData={setCursorData}
+        />
       </div>
       <ChartSidebar
         chartViewModel={chartViewModel}
+        cursorData={cursorData}
         theme={theme}
         setTheme={setTheme}
         zoom={zoom}

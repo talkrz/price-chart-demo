@@ -2,12 +2,14 @@ import React from 'react';
 import GithubIcon from '../GithubIcon';
 import './ChartSidebar.css';
 
-export default function ChartSidebar({ chartViewModel, zoom, setZoom, theme, setTheme }) {
+export default function ChartSidebar({ chartViewModel, zoom, setZoom, theme, setTheme, cursorData }) {
   const data = chartViewModel.data;
   const price = data.length && data[data.length - 1].c;
   const change = chartViewModel.change ? chartViewModel.change : 0.0;
   const priceMin = chartViewModel.priceMin;
   const priceMax = chartViewModel.priceMax;
+  const dateFrom = data.length && data[0].date;
+  const dateTo = data.length && data[data.length - 1].date;
 
   return (
     <div className={`ChartSidebar ChartSidebar-${theme}`}>
@@ -23,12 +25,48 @@ export default function ChartSidebar({ chartViewModel, zoom, setZoom, theme, set
         <table className={`ChartSidebar-table ChartSidebar-table-${theme}`}>
           <tbody>
             <tr>
+              <th>Date</th>
+              <td>{cursorData[0] && cursorData[0].date}</td>
+            </tr>
+            <tr>
+              <th>Open</th>
+              <td>{cursorData[0] && cursorData[0].o}</td>
+            </tr>
+            <tr>
+              <th>High</th>
+              <td>{cursorData[0] && cursorData[0].h}</td>
+            </tr>
+            <tr>
+              <th>Low</th>
+              <td>{cursorData[0] && cursorData[0].l}</td>
+            </tr>
+            <tr>
+              <th>Close</th>
+              <td>{cursorData[0] && cursorData[0].c}</td>
+            </tr>
+            <tr>
+              <th>Volume</th>
+              <td>{cursorData[0] && cursorData[0].volume}</td>
+            </tr>
+          </tbody>
+        </table>
+        <table className={`ChartSidebar-table ChartSidebar-table-${theme}`}>
+          <tbody>
+            <tr>
               <th>Min price</th>
               <td>{priceMin}</td>
             </tr>
             <tr>
               <th>Max price</th>
               <td>{priceMax}</td>
+            </tr>
+            <tr>
+              <th>Date from</th>
+              <td>{dateFrom}</td>
+            </tr>
+            <tr>
+              <th>Date to</th>
+              <td>{dateTo}</td>
             </tr>
           </tbody>
         </table>

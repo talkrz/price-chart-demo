@@ -5,6 +5,8 @@ import {
   chartDraw,
   chartDrawCrosshair,
   chartGetViewModel,
+  chartAddEventListener,
+  chartRemoveEventListener,
 } from '@talkrz/price-chart';
 import useDimensions from '../hooks/useDimensions';
 
@@ -14,7 +16,7 @@ import mouseHandlerCrosshair from './mouseHandlerCrosshair';
 
 import './Chart.css';
 
-export default function Chart({ data, style, zoom, setZoom, setChartViewModel }) {
+export default function Chart({ data, style, zoom, setZoom, setChartViewModel, setCursorData }) {
   const contentRef = useRef();
   const canvasRef = useRef();
   const canvasCrosshairRef = useRef();
@@ -33,10 +35,9 @@ export default function Chart({ data, style, zoom, setZoom, setChartViewModel })
   );
   const [chartOffset, chartMoveHandlers] = useMoveChart(canvasRef, zoom);
 
-  // chart drawing effect
+  // init effect
   useEffect(() => {
     if (!data.length) return;
-
     // init chart view
     chartInit(
       {
@@ -52,6 +53,20 @@ export default function Chart({ data, style, zoom, setZoom, setChartViewModel })
       style,
       locale,
     );
+
+    const onMoveCursor = (cursor) => {
+      setCursorData(cursor);
+    };
+    chartAddEventListener('moveCursor', onMoveCursor);
+
+    return () => {
+      chartRemoveEventListener('moveCursor', onMoveCursor);
+    }
+  })
+
+  // chart drawing effect
+  useEffect(() => {
+    if (!data.length) return;
 
     // draw chart on the canvas
     chartDraw();
