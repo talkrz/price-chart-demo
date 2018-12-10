@@ -14,21 +14,20 @@ const style = {
   colorBorder: '#e8e8e8',
   colorScale: '#666',
   colorCrosshair: '#ccc',
-  fontSize: 14,
-  padding: 5,
-  margin: [10, 10, 10, 10],
+  fontSize: 12,
+  padding: 4,
   geometry: {
     boxPrice: {
       height: 0.8,
       top: 0,
-      padding: 5,
+      padding: 4,
       margin: [10, 48, 10, 10],
     },
     boxVolume: {
       height: 0.2,
       top: 0.8,
-      padding: 5,
-      margin: [10, 48, 10, 10],
+      padding: 4,
+      margin: [7, 48, 10, 10],
     }
   },
 };
