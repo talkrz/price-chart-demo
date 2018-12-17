@@ -17,7 +17,6 @@ const styles = {
     colorCrosshair: '#ccc',
     fontSize: 14,
     padding: 5,
-    margin: [10, 10, 10, 10],
     geometry: {
       boxPrice: {
         height: 0.8,
@@ -46,7 +45,6 @@ const styles = {
     colorCrosshair: '#666',
     fontSize: 14,
     padding: 5,
-    margin: [10, 10, 10, 10],
     geometry: {
       boxPrice: {
         height: 0.8,
