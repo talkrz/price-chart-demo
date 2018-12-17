@@ -10,6 +10,7 @@ import './Chart.css';
 export default function Chart({ data, style, zoom }) {
   const contentRef = useRef();
   const canvasRef = useRef();
+  const canvasCrosshairRef = useRef();
   // hook that handles updating width and height according to current dimensions
   // supporting window resize
   const [width, height] = useDimensions(contentRef);
@@ -24,7 +25,7 @@ export default function Chart({ data, style, zoom }) {
     chartInit(
       {
         base: canvasRef.current.getContext("2d"),
-        crosshair: null,
+        crosshair: canvasCrosshairRef.current.getContext("2d"),
       },
       data,
       width,
@@ -47,6 +48,13 @@ export default function Chart({ data, style, zoom }) {
         height={height * devicePixelRatio}
         ref={canvasRef}
         className="Chart-canvas"
+        style={{ width, height }}
+      />
+      <canvas
+        width={width * devicePixelRatio}
+        height={height * devicePixelRatio}
+        ref={canvasCrosshairRef}
+        className="Chart-canvas-crosshair"
         style={{ width, height }}
       />
     </div>
