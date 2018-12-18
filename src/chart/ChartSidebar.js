@@ -3,11 +3,11 @@ import GithubIcon from '../GithubIcon';
 import './ChartSidebar.css';
 
 export default function ChartSidebar({ chartViewModel, zoom, setZoom, theme, setTheme, cursorData }) {
-  const data = chartViewModel.data;
+  const data = chartViewModel.quotes ? chartViewModel.quotes.data : [];
   const price = data.length && data[data.length - 1].c;
-  const change = chartViewModel.change ? chartViewModel.change : 0.0;
-  const priceMin = chartViewModel.priceMin;
-  const priceMax = chartViewModel.priceMax;
+  const change = chartViewModel.quotes ? chartViewModel.quotes.lastChange : 0.0;
+  const priceMin = chartViewModel.quotes ? chartViewModel.quotes.min : 0.0;
+  const priceMax = chartViewModel.quotes ? chartViewModel.quotes.max : 0.0;
   const dateFrom = data.length && data[0].date;
   const dateTo = data.length && data[data.length - 1].date;
 
