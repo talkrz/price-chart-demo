@@ -22,6 +22,35 @@
   font-size: 22px;
 }
 
+.App-header-dark a {
+  color: #aaa;
+}
+
+.App-header-light a {
+  color: #000;
+}
+
+.App-header a {
+  font-size: 12px;
+  font-weight: normal;
+  text-decoration: none;
+  margin-left: 20px;
+  line-height: 1.5;
+}
+
+.App-header button {
+  font-size: 12px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-left: 20px;
+  padding: 0;
+}
+
+.App-header-dark button {
+  color: #aaa;
+}
+
 .App-header-light {
   background: #fff;
   box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.05);
@@ -30,19 +59,8 @@
 
 .App-header-dark {
   background: #000;
-  color: #aaa;
   box-shadow: 0px 0px 20px 0px rgba(255,255,255,0.05);
   border-bottom: 1px solid #222;
-}
-
-.App-header-button {
-  border: none;
-  background: none;
-  cursor: pointer;
-  margin-left: 20px;
-}
-
-.App-header-button-dark {
   color: #aaa;
 }
 
