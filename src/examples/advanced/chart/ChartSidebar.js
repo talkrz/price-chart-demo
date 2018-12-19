@@ -1,5 +1,5 @@
 import React from 'react';
-import GithubIcon from '../GithubIcon';
+import GithubIcon from '../../../GithubIcon';
 import './ChartSidebar.css';
 
 export default function ChartSidebar({ chartViewModel, zoom, setZoom, theme, setTheme, cursorData }) {

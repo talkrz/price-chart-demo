@@ -7,8 +7,10 @@ import {
   chartGetViewModel,
   chartAddEventListener,
   chartRemoveEventListener,
+  chartThemes,
+  chartConfig,
 } from '@talkrz/price-chart';
-import useDimensions from '../hooks/useDimensions';
+import useDimensions from '../../../hooks/useDimensions';
 
 import mouseHandlerZoom from './mouseHandlerZoom';
 import useMoveChart from './useMoveChart';
@@ -16,10 +18,13 @@ import mouseHandlerCrosshair from './mouseHandlerCrosshair';
 
 import './Chart.css';
 
-export default function Chart({ data, style, zoom, setZoom, setChartViewModel, setCursorData }) {
+export default function Chart({ data, theme, zoom, setZoom, setChartViewModel, setCursorData }) {
+  const config = chartConfig();
+  config.fontSize = 14;
+
   const contentRef = useRef();
-  const canvasRef = useRef();
-  const canvasCrosshairRef = useRef();
+  const canvasBaseRef = useRef();
+  const canvasScaleRef = useRef();
   // hook that handles updating width and height according to current dimensions
   // supporting window resize
   const [width, height] = useDimensions(contentRef);
@@ -29,11 +34,11 @@ export default function Chart({ data, style, zoom, setZoom, setChartViewModel, s
   // prepare handlers for mouse interactions
   const wheelHandler = mouseHandlerZoom(zoom, setZoom);
   const crosshairMoveHandler = mouseHandlerCrosshair(
-    canvasRef,
+    canvasBaseRef,
     chartDrawCrosshair,
     chartSetCursor,
   );
-  const [chartOffset, chartMoveHandlers] = useMoveChart(canvasRef, zoom);
+  const [chartOffset, chartMoveHandlers] = useMoveChart(canvasBaseRef, zoom);
 
   // init effect
   useEffect(() => {
@@ -41,8 +46,8 @@ export default function Chart({ data, style, zoom, setZoom, setChartViewModel, s
     // init chart view
     chartInit(
       {
-        base: canvasRef.current.getContext("2d"),
-        crosshair: canvasCrosshairRef.current.getContext("2d"),
+        base: canvasBaseRef.current.getContext("2d"),
+        scale: canvasScaleRef.current.getContext("2d"),
       },
       data,
       width,
@@ -50,7 +55,7 @@ export default function Chart({ data, style, zoom, setZoom, setChartViewModel, s
       devicePixelRatio,
       zoom,
       chartOffset,
-      style,
+      chartThemes()[theme],
       locale,
     );
 
@@ -73,22 +78,22 @@ export default function Chart({ data, style, zoom, setZoom, setChartViewModel, s
 
     // retrieve view model containing useful data about displayed chart
     setChartViewModel(chartGetViewModel());
-  }, [data.length, width, height, zoom, style, chartOffset])
+  }, [data.length, width, height, zoom, theme, chartOffset])
 
   return (
     <div className="Chart" ref={contentRef}>
       <canvas
         width={width * devicePixelRatio}
         height={height * devicePixelRatio}
-        ref={canvasRef}
+        ref={canvasBaseRef}
         className="Chart-canvas"
         style={{ width, height }}
       />
       <canvas
         width={width * devicePixelRatio}
         height={height * devicePixelRatio}
-        ref={canvasCrosshairRef}
-        className="Chart-canvas-crosshair"
+        ref={canvasScaleRef}
+        className="Chart-canvas-scale"
         style={{ width, height }}
         onMouseMove={(e) => {
           chartMoveHandlers.mouseMoveHandler(e);

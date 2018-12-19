@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import ChartView from './ChartView';
-import ChartBasicView from './ChartBasicView';
+import ChartView from './examples/advanced/ChartView';
+import ChartBasicView from './examples/basic/ChartBasicView';
 import './App.css';
 
 export default function App() {
