@@ -25,7 +25,7 @@ export default function App() {
         >
           advanced
         </button>
-        <a href="/pureJs.html" target="_blank">pure Javascript</a>
+        <a href="pureJs.html" target="_blank">pure Javascript</a>
       </header>
       <div className="App-content">
         {view === 'advanced' && <ChartView parentSetTheme={setTheme} />}
