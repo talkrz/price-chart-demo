@@ -17,15 +17,15 @@ export default function App() {
           className="App-header-button"
           onClick={() => setView('basic')}
         >
-          basic
+          basic (React)
         </button>
         <button
           className="App-header-button"
           onClick={() => setView('advanced')}
         >
-          advanced
+          advanced (React)
         </button>
-        <a href="pureJs.html" target="_blank">pure Javascript</a>
+        <a href="pureJs.html" target="_blank">basic (plain JavaScript)</a>
       </header>
       <div className="App-content">
         {view === 'advanced' && <ChartView parentSetTheme={setTheme} />}
