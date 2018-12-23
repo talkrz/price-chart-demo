@@ -9,6 +9,7 @@ export default function ChartView({ parentSetTheme }) {
   });
   const [zoom, setZoom] = useState(8);
   const [theme, setTheme] = useState('light');
+  const [chartType, setChartType] = useState('candlestick');
   const [cursorData, setCursorData] = useState([null, null]);
 
   useEffect(() => {
@@ -22,6 +23,7 @@ export default function ChartView({ parentSetTheme }) {
           zoom={zoom}
           setZoom={setZoom}
           theme={theme}
+          chartType={chartType}
           setChartViewModel={setChartViewModel}
           setCursorData={setCursorData}
         />
@@ -31,6 +33,8 @@ export default function ChartView({ parentSetTheme }) {
         cursorData={cursorData}
         theme={theme}
         setTheme={setTheme}
+        chartType={chartType}
+        setChartType={setChartType}
         zoom={zoom}
         setZoom={setZoom}
       />

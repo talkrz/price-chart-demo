@@ -12,3 +12,4 @@ cd ../price-chart
 npm link
 cd ../price-chart-demo/
 npm link @talkrz/price-chart
+```

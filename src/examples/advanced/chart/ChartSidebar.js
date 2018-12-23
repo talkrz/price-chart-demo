@@ -2,7 +2,16 @@ import React from 'react';
 import GithubIcon from '../../../GithubIcon';
 import './ChartSidebar.css';
 
-export default function ChartSidebar({ chartViewModel, zoom, setZoom, theme, setTheme, cursorData }) {
+export default function ChartSidebar({
+  chartViewModel,
+  zoom,
+  setZoom,
+  theme,
+  setTheme,
+  chartType,
+  setChartType,
+  cursorData
+}) {
   const data = chartViewModel.quotes ? chartViewModel.quotes.data : [];
   const price = data.length && data[data.length - 1].c;
   const change = chartViewModel.quotes ? chartViewModel.quotes.lastChange : 0.0;
@@ -93,6 +102,32 @@ export default function ChartSidebar({ chartViewModel, zoom, setZoom, theme, set
                 onChange={(e) => { setTheme(e.target.value) }}
               />
               Dark
+            </label>
+          </div>
+        </div>
+        <div className={`ChartSidebar-control ChartSidebar-control-${theme}`}>
+          <p className="ChartSidebar-label">
+            Chart type:
+          </p>
+
+          <div className="ChartSidebar-chart-type">
+            <label>
+              <input
+                type="radio"
+                value="candlestick"
+                checked={chartType === "candlestick"}
+                onChange={(e) => { setChartType(e.target.value) }}
+              />
+              Candlestick
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="line"
+                checked={chartType === "line"}
+                onChange={(e) => { setChartType(e.target.value) }}
+              />
+              Line
             </label>
           </div>
         </div>

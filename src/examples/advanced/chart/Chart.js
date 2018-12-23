@@ -18,9 +18,10 @@ import mouseHandlerCrosshair from './mouseHandlerCrosshair';
 
 import './Chart.css';
 
-export default function Chart({ data, theme, zoom, setZoom, setChartViewModel, setCursorData }) {
+export default function Chart({ data, theme, chartType, zoom, setZoom, setChartViewModel, setCursorData }) {
   const config = chartConfig();
   config.fontSize = 14;
+  config.chartType = chartType;
 
   const contentRef = useRef();
   const canvasBaseRef = useRef();
@@ -78,7 +79,7 @@ export default function Chart({ data, theme, zoom, setZoom, setChartViewModel, s
 
     // retrieve view model containing useful data about displayed chart
     setChartViewModel(chartGetViewModel());
-  }, [data.length, width, height, zoom, theme, chartOffset])
+  }, [data.length, width, height, zoom, theme, chartType, chartOffset])
 
   return (
     <div className="Chart" ref={contentRef}>

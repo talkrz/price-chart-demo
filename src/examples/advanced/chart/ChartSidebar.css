@@ -36,13 +36,13 @@
   border: 1px solid #444;
 }
 
-.ChartSidebar-theme label {
+.ChartSidebar-control label {
   font-size: 13px;
   font-weight: lighter;
   display: block;
 }
 
-.ChartSidebar-theme input {
+.ChartSidebar-control input[type=radio] {
   display: inline;
   margin-right: 5px;
 }
