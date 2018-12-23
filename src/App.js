@@ -14,13 +14,13 @@ export default function App() {
       <header className={`App-header App-header-${theme}`}>
         Price chart demo
         <button
-          className="App-header-button"
-          onClick={() => setView('basic')}
+          className={`App-header-button ${view === 'basic' ? 'active' : ''}`}
+          onClick={() => {setView('basic'); setTheme('light') }}
         >
           basic (React)
         </button>
         <button
-          className="App-header-button"
+          className={`App-header-button ${view === 'advanced' ? 'active' : ''}`}
           onClick={() => setView('advanced')}
         >
           advanced (React)

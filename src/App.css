@@ -31,24 +31,37 @@
 }
 
 .App-header a {
+  display: block;
   font-size: 12px;
   font-weight: normal;
   text-decoration: none;
   margin-left: 20px;
-  line-height: 1.5;
+  padding: 5px 5px 7px 5px;
 }
 
 .App-header button {
   font-size: 12px;
-  border: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid #fff;
   background: none;
   cursor: pointer;
   margin-left: 20px;
-  padding: 0;
+  padding: 5px;
+}
+
+.App-header button.active {
+  border-bottom: 2px solid #fc0;
+}
+
+.App-header-dark button.active {
+  border-bottom: 2px solid #860;
 }
 
 .App-header-dark button {
   color: #aaa;
+  border-bottom: 2px solid #000;
 }
 
 .App-header-light {
