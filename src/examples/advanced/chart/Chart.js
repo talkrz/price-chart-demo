@@ -106,6 +106,7 @@ export default function Chart({ data, theme, chartType, zoom, setZoom, setChartV
         onWheel={wheelHandler}
         onMouseDown={chartMoveHandlers.mouseDownHanlder}
         onMouseUp={chartMoveHandlers.mouseUpHandler}
+        onDragStart={(e) => e.preventDefault()}
       />
     </div>
   )
