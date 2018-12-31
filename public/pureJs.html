@@ -303,16 +303,21 @@
       base.height = height * devicePixelRatio;
       scale.width = width * devicePixelRatio;
       scale.height = height * devicePixelRatio;
-      PriceChart.chartInit(
-        layers,
-        data,
+
+      const chartState = {
         width,
         height,
         devicePixelRatio,
-        8,
-        0,
-        PriceChart.chartThemes()['light'],
-        'en',
+        zoom: 8,
+        offset: 0,
+        config: PriceChart.chartDefaultConfig(),
+        theme: PriceChart.chartThemes()['light'],
+      }
+
+      PriceChart.chartInit(
+        data,
+        layers,
+        chartState
       );
 
       // draw chart on the canvas

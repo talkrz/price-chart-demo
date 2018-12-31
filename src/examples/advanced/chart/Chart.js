@@ -8,7 +8,7 @@ import {
   chartAddEventListener,
   chartRemoveEventListener,
   chartThemes,
-  chartConfig,
+  chartDefaultConfig,
 } from '@talkrz/price-chart';
 import useDimensions from '../../../hooks/useDimensions';
 
@@ -19,8 +19,7 @@ import mouseHandlerCrosshair from './mouseHandlerCrosshair';
 import './Chart.css';
 
 export default function Chart({ data, theme, chartType, zoom, setZoom, setChartViewModel, setCursorData }) {
-  const config = chartConfig();
-  config.fontSize = 14;
+  const config = chartDefaultConfig();
   config.chartType = chartType;
 
   const contentRef = useRef();
@@ -30,7 +29,6 @@ export default function Chart({ data, theme, chartType, zoom, setZoom, setChartV
   // supporting window resize
   const [width, height] = useDimensions(contentRef);
   const [devicePixelRatio] = useState(window.devicePixelRatio);
-  const [locale] = useState('en');
 
   // prepare handlers for mouse interactions
   const wheelHandler = mouseHandlerZoom(zoom, setZoom);
@@ -39,25 +37,29 @@ export default function Chart({ data, theme, chartType, zoom, setZoom, setChartV
     chartDrawCrosshair,
     chartSetCursor,
   );
-  const [chartOffset, chartMoveHandlers] = useMoveChart(canvasBaseRef, zoom);
+  const [offset, chartMoveHandlers] = useMoveChart(canvasBaseRef, zoom);
 
-  // init effect
+  const chartState = {
+    width,
+    height,
+    devicePixelRatio,
+    zoom,
+    offset,
+    config,
+    theme: chartThemes()[theme],
+  }
+
+  // chart drawing effect
   useEffect(() => {
     if (!data.length) return;
     // init chart view
     chartInit(
+      data,
       {
         base: canvasBaseRef.current.getContext("2d"),
         scale: canvasScaleRef.current.getContext("2d"),
       },
-      data,
-      width,
-      height,
-      devicePixelRatio,
-      zoom,
-      chartOffset,
-      chartThemes()[theme],
-      locale,
+      chartState
     );
 
     const onMoveCursor = (cursor) => {
@@ -65,21 +67,16 @@ export default function Chart({ data, theme, chartType, zoom, setZoom, setChartV
     };
     chartAddEventListener('moveCursor', onMoveCursor);
 
-    return () => {
-      chartRemoveEventListener('moveCursor', onMoveCursor);
-    }
-  })
-
-  // chart drawing effect
-  useEffect(() => {
-    if (!data.length) return;
-
     // draw chart on the canvas
     chartDraw();
 
     // retrieve view model containing useful data about displayed chart
     setChartViewModel(chartGetViewModel());
-  }, [data.length, width, height, zoom, theme, chartType, chartOffset])
+
+    return () => {
+      chartRemoveEventListener('moveCursor', onMoveCursor);
+    }
+  }, [width, height, theme, chartType, zoom, offset])
 
   return (
     <div className="Chart" ref={contentRef}>

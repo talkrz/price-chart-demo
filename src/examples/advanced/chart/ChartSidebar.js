@@ -31,7 +31,7 @@ export default function ChartSidebar({
             &nbsp;{change >= 0.0 ? '+' : ''}{change.toFixed(2)}%
           </span>
         </div>
-        {cursorData[0] && <table className={`ChartSidebar-table ChartSidebar-table-${theme}`}>
+        <table className={`ChartSidebar-table ChartSidebar-table-${theme}`}>
           <tbody>
             <tr>
               <th>Date</th>
@@ -40,10 +40,10 @@ export default function ChartSidebar({
             <tr>
               <th>Price</th>
               <td>
-                O:{cursorData[0] && cursorData[0].o},
-                H:{cursorData[0] && cursorData[0].h},
-                L:{cursorData[0] && cursorData[0].l},
-                C:{cursorData[0] && cursorData[0].c}
+                {cursorData[0] && `O:${cursorData[0].o},`}
+                {cursorData[0] && `H:${cursorData[0].h},`}
+                {cursorData[0] && `L:${cursorData[0].l},`}
+                {cursorData[0] && `C:${cursorData[0].c}`}
               </td>
             </tr>
             <tr>
@@ -51,7 +51,7 @@ export default function ChartSidebar({
               <td>{cursorData[0] && cursorData[0].volume}</td>
             </tr>
           </tbody>
-        </table>}
+        </table>
         <table className={`ChartSidebar-table ChartSidebar-table-${theme}`}>
           <tbody>
             <tr>
