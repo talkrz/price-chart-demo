@@ -1,4 +1,5 @@
 .ChartView-chart-container {
   flex-grow: 1;
   display: flex;
+  margin: 10px;
 }

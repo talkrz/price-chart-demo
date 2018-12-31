@@ -1,45 +1,54 @@
 .ChartSidebar {
-  padding: 15px;
+  padding: 20px;
   min-width: 20%;
   font-size: 15px;
+  margin: 20px;
+}
+
+.ChartSidebar-light {
+  border: solid 1px #f4f4f4;
 }
 
 .ChartSidebar-dark {
   background: #000;
-  color: #aaa;
+  color: #ccc;
+  border: solid 1px #222;
 }
 
 .ChartSidebar h3 {
+  font-weight: normal;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.ChartSidebar h2 {
   font-weight: lighter;
-  font-size: 18px;
+  font-size: 20px;
+  margin: 25px 0 10px 0;
 }
 
 .ChartSidebar-control {
   margin-bottom: 10px;
 }
 
-.ChartSidebar-label {
-  font-size: 18px;
+.ChartSidebar-control label {
+  font-size: 14px;
   font-weight: lighter;
-  margin: 5px 0;
+  display: block;
 }
 
-.ChartSidebar-control input {
+.ChartSidebar-control input[type=text] {
   display: block;
   padding: 2px 8px;
   font-size: 14px;
+  width: 50px;
+  margin-left: 5px;
 }
 
-.ChartSidebar-control-dark input {
+.ChartSidebar-control-dark input[type=text] {
   color: #ddd;
   background: #000;
   border: 1px solid #444;
-}
-
-.ChartSidebar-control label {
-  font-size: 13px;
-  font-weight: lighter;
-  display: block;
 }
 
 .ChartSidebar-control input[type=radio] {
@@ -47,8 +56,22 @@
   margin-right: 5px;
 }
 
+
+.ChartSidebar-name {
+  font-size: 30px;
+  font-weight: lighter;
+}
+
+.ChartSidebar-name-light {
+  color: #888;
+}
+
+.ChartSidebar-name-dark {
+  color: #888;
+}
+
 .ChartSidebar-price {
-  margin: 10px 0;
+  margin: 0;
 }
 
 .ChartSidebar-change {
@@ -91,6 +114,11 @@
   text-align: left;
   font-weight: normal;
   padding-left: 0;
+}
+
+.ChartSidebar-tips {
+  font-weight: lighter;
+  margin: 0;
 }
 
 .ChartSidebar-gihub {

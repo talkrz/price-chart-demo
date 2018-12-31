@@ -23,32 +23,34 @@ export default function ChartSidebar({
   return (
     <div className={`ChartSidebar ChartSidebar-${theme}`}>
       <div className="ChartSidebar-controls">
-        <div className="ChartSidebar-price">
-          <span className={`ChartSidebar-change`}>
-            {price.toFixed(2)}
-          </span>
-          <span className={`ChartSidebar-percent ${change >= 0.0 ? 'ChartSidebar-bull' : 'ChartSidebar-bear'}`}>
-            &nbsp;{change >= 0.0 ? '+' : ''}{change.toFixed(2)}%
-          </span>
+        <div className="ChartSidebar-top-bar">
+          <div className={`ChartSidebar-name ChartSidebar-name-${theme}`}>
+            Acme Inc.
+          </div>
+          <div className="ChartSidebar-price">
+            <span className={`ChartSidebar-change`}>
+              {price.toFixed(2)}
+            </span>
+            <span className={`ChartSidebar-percent ${change >= 0.0 ? 'ChartSidebar-bull' : 'ChartSidebar-bear'}`}>
+              &nbsp;{change >= 0.0 ? '+' : ''}{change.toFixed(2)}%
+            </span>
+          </div>
         </div>
         <table className={`ChartSidebar-table ChartSidebar-table-${theme}`}>
           <tbody>
             <tr>
               <th>Date</th>
-              <td>{cursorData[0] && cursorData[0].date}</td>
+              <td>{cursorData[0] ? cursorData[0].date : 'n/a'}</td>
             </tr>
             <tr>
               <th>Price</th>
               <td>
-                {cursorData[0] && `O:${cursorData[0].o},`}
-                {cursorData[0] && `H:${cursorData[0].h},`}
-                {cursorData[0] && `L:${cursorData[0].l},`}
-                {cursorData[0] && `C:${cursorData[0].c}`}
+                {cursorData[0] ? `O:${cursorData[0].o} H:${cursorData[0].h} L:${cursorData[0].l} C:${cursorData[0].c}` : 'n/a'}
               </td>
             </tr>
             <tr>
               <th>Volume</th>
-              <td>{cursorData[0] && cursorData[0].volume}</td>
+              <td>{cursorData[0] ? cursorData[0].volume : 'n/a'}</td>
             </tr>
           </tbody>
         </table>
@@ -73,9 +75,9 @@ export default function ChartSidebar({
           </tbody>
         </table>
         <div className={`ChartSidebar-control ChartSidebar-control-${theme}`}>
-          <p className="ChartSidebar-label">
+          <h3>
             Theme:
-          </p>
+          </h3>
 
           <div className="ChartSidebar-theme">
             <label>
@@ -99,9 +101,9 @@ export default function ChartSidebar({
           </div>
         </div>
         <div className={`ChartSidebar-control ChartSidebar-control-${theme}`}>
-          <p className="ChartSidebar-label">
+          <h3>
             Chart type:
-          </p>
+          </h3>
 
           <div className="ChartSidebar-chart-type">
             <label>
@@ -125,22 +127,20 @@ export default function ChartSidebar({
           </div>
         </div>
         <div className={`ChartSidebar-control ChartSidebar-control-${theme}`}>
-          <label htmlFor="zoom" className="ChartSidebar-label">
-            Zoom:
-          </label>
+          <h3>Zoom:</h3>
           <input
             type="text"
             value={zoom}
             onChange={e => setZoom(e.target.value)} />
         </div>
       </div>
-      <h3>Tips:</h3>
-      <p className="ChartSidebar-tips">
-        Scroll over the chart to zoom<br />
-        Move chart by dragging with mouse
-      </p>
+      <h2>Tips</h2>
+      <ul className="ChartSidebar-tips">
+        <li>Scroll over the chart to zoom</li>
+        <li>Move chart by dragging with mouse</li>
+      </ul>
       <div className={`ChartSidebar-gihub ChartSidebar-gihub-${theme}`}>
-        <h3>See the code on GitHub:</h3>
+        <h2>See the code on GitHub</h2>
         <a href="https://github.com/talkrz/price-chart" target="_blank" rel="noopener noreferrer">
           <GithubIcon width="20" height="20" color={theme === 'light' ? '#444' : '#aaa'} />
           Price Chart
