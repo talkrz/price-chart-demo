@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function useMoveChart(canvasRef, zoom) {
+export default function useMoveChart(canvasRef, zoom, minOffset) {
   const [chartOffset, setChartOffset] = useState(0);
   const [chartPreviousOffset, setChartPreviousOffset] = useState(0);
   const [dragStartX, setDragStartX] = useState(0);
@@ -22,7 +22,7 @@ export default function useMoveChart(canvasRef, zoom) {
     if (event.buttons & 1) {
       const newOffset =  Math.round((dragStartX - event.clientX - x) / zoom);
       if (newOffset !== chartOffset) {
-        setChartOffset(newOffset + chartPreviousOffset);
+        setChartOffset(Math.max(minOffset, newOffset + chartPreviousOffset));
       }
     }
   }

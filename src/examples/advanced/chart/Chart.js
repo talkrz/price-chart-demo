@@ -37,7 +37,13 @@ export default function Chart({ data, theme, chartType, zoom, setZoom, setChartV
     chartDrawCrosshair,
     chartSetCursor,
   );
-  const [offset, chartMoveHandlers] = useMoveChart(canvasBaseRef, zoom);
+
+  const [offset, chartMoveHandlers] = useMoveChart(
+    canvasBaseRef,
+    zoom,
+    // don't allow to move chart to the past too much
+    -data.length + chartGetViewModel().capacity
+  );
 
   const chartState = {
     width,
