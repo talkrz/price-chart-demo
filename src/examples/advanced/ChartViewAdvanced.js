@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ChartContainer from './chart/ChartContainer';
 import ChartSidebar from './chart/ChartSidebar';
-import './ChartView.css';
+import './ChartViewAdvanced.css';
 
-export default function ChartView({ parentSetTheme }) {
+export default function ChartViewAdvanced({ parentSetTheme }) {
   const [chartViewModel, setChartViewModel] = useState({
     data: []
   });
@@ -24,7 +24,7 @@ export default function ChartView({ parentSetTheme }) {
 
   return (
     <>
-      <div className="ChartView-chart-container">
+      <div className="ChartViewAdvanced-container">
         <ChartContainer
           zoom={zoom}
           setZoom={setZoomWithLimit}

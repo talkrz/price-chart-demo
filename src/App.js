@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import ChartView from './examples/advanced/ChartView';
+import ChartViewLive from './examples/live/ChartViewLive';
+import ChartViewAdvanced from './examples/advanced/ChartViewAdvanced';
 import ChartBasicView from './examples/basic/ChartBasicView';
 import './App.css';
 
@@ -24,13 +25,14 @@ export default function App() {
             className={`App-header-button ${view === 'advanced' ? 'active' : ''}`}
             onClick={() => setView('advanced')}
           >
-            advanced (React)
+            interactive (React)
           </button>
           <a href="pureJs.html" target="_blank">basic (plain JavaScript)</a>
         </div>
       </header>
       <div className="App-content">
-        {view === 'advanced' && <ChartView parentSetTheme={setTheme} />}
+        {view === 'live' && <ChartViewLive parentSetTheme={setTheme} />}
+        {view === 'advanced' && <ChartViewAdvanced parentSetTheme={setTheme} />}
         {view === 'basic' && <ChartBasicView parentSetTheme={setTheme} />}
       </div>
     </div>
