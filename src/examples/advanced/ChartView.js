@@ -12,6 +12,12 @@ export default function ChartView({ parentSetTheme }) {
   const [chartType, setChartType] = useState('candlestick');
   const [cursorData, setCursorData] = useState([null, null]);
 
+  function setZoomWithLimit(value) {
+    if (value > 13) value = 13;
+    if (value < 2) value = 2;
+    setZoom(value);
+  }
+
   useEffect(() => {
     parentSetTheme(theme)
   }, [theme])
@@ -21,7 +27,7 @@ export default function ChartView({ parentSetTheme }) {
       <div className="ChartView-chart-container">
         <ChartContainer
           zoom={zoom}
-          setZoom={setZoom}
+          setZoom={setZoomWithLimit}
           theme={theme}
           chartType={chartType}
           setChartViewModel={setChartViewModel}
