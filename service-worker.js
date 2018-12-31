@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/price-chart-demo/precache-manifest.c9bd928e55daf12b0953699f6e2cb214.js"
+  "/price-chart-demo/precache-manifest.1aeaca68167fad9a1ee9fe9c933546d1.js"
 );
 
 workbox.clientsClaim();
