@@ -44,7 +44,7 @@ export default function ChartSidebar({
             </tr>
             <tr>
               <th>Price</th>
-              <td>
+              <td className="ChartSidebar-table-ohlc">
                 {cursorData[0] ? `O:${cursorData[0].o} H:${cursorData[0].h} L:${cursorData[0].l} C:${cursorData[0].c}` : 'n/a'}
               </td>
             </tr>

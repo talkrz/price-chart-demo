@@ -97,6 +97,10 @@
   font-size: 14px;
 }
 
+.ChartSidebar-table-ohlc {
+  font-size: 12px;
+}
+
 .ChartSidebar-table th, .ChartSidebar-table td {
   padding: 4px 10px;
 }
