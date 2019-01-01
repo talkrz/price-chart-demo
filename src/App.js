@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ChartViewLive from './examples/live/ChartViewLive';
 import ChartViewAdvanced from './examples/advanced/ChartViewAdvanced';
 import ChartBasicView from './examples/basic/ChartBasicView';
 import './App.css';
@@ -31,7 +30,6 @@ export default function App() {
         </div>
       </header>
       <div className="App-content">
-        {view === 'live' && <ChartViewLive parentSetTheme={setTheme} />}
         {view === 'advanced' && <ChartViewAdvanced parentSetTheme={setTheme} />}
         {view === 'basic' && <ChartBasicView parentSetTheme={setTheme} />}
       </div>
