@@ -11,7 +11,17 @@ export default function useMoveChart(canvasRef, zoom, minOffset) {
     setDragStartX(event.clientX - x);
   }
 
+  function touchStartHandler(event) {
+    const rect = canvasRef.current.getBoundingClientRect();
+    const x = rect.left;
+    setDragStartX(event.touches[0].clientX - x);
+  }
+
   function mouseUpHandler(event) {
+    setChartPreviousOffset(chartOffset);
+  }
+
+  function touchEndHandler(event) {
     setChartPreviousOffset(chartOffset);
   }
 
@@ -27,12 +37,25 @@ export default function useMoveChart(canvasRef, zoom, minOffset) {
     }
   }
 
+  function touchMoveHandler(event) {
+    const rect = canvasRef.current.getBoundingClientRect();
+    const x = rect.left;
+
+    const newOffset =  Math.round((dragStartX - event.touches[0].clientX - x) / zoom);
+    if (newOffset !== chartOffset) {
+      setChartOffset(Math.max(minOffset, newOffset + chartPreviousOffset));
+    }
+  }
+
   return [
     chartOffset,
     {
       mouseDownHanlder,
       mouseUpHandler,
       mouseMoveHandler,
+      touchStartHandler,
+      touchEndHandler,
+      touchMoveHandler,
     }
   ]
 }

@@ -106,6 +106,11 @@ export default function Chart({ data, theme, chartType, zoom, setZoom, setChartV
         onWheel={wheelHandler}
         onMouseDown={chartMoveHandlers.mouseDownHanlder}
         onMouseUp={chartMoveHandlers.mouseUpHandler}
+        onTouchMove={(e) => {
+          chartMoveHandlers.touchMoveHandler(e);
+        }}
+        onTouchStart={chartMoveHandlers.touchStartHandler}
+        onTouchEnd={chartMoveHandlers.touchEndHandler}
         onDragStart={
           // Looks like some browsers have default handler for drag, so let's disable it
           (e) => e.preventDefault()

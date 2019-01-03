@@ -5,6 +5,13 @@
   margin: 20px;
 }
 
+@media (max-width: 640px) {
+  .ChartSidebar {
+    margin: 10px;
+  }
+}
+
+
 .ChartSidebar-light {
   border: solid 1px #f4f4f4;
 }
@@ -95,10 +102,6 @@
   border-collapse: collapse;
   margin: 20px 0;
   font-size: 14px;
-}
-
-.ChartSidebar-table-ohlc {
-  font-size: 12px;
 }
 
 .ChartSidebar-table th, .ChartSidebar-table td {

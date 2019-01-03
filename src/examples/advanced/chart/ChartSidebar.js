@@ -43,9 +43,27 @@ export default function ChartSidebar({
               <td>{cursorData[0] ? cursorData[0].date : 'n/a'}</td>
             </tr>
             <tr>
-              <th>Price</th>
-              <td className="ChartSidebar-table-ohlc">
-                {cursorData[0] ? `O:${cursorData[0].o} H:${cursorData[0].h} L:${cursorData[0].l} C:${cursorData[0].c}` : 'n/a'}
+              <th>Price O</th>
+              <td>
+                {cursorData[0] ? `${cursorData[0].o}` : 'n/a'}
+              </td>
+            </tr>
+            <tr>
+              <th>Price H</th>
+              <td>
+                {cursorData[0] ? `${cursorData[0].h}` : 'n/a'}
+              </td>
+            </tr>
+            <tr>
+              <th>Price L</th>
+              <td>
+                {cursorData[0] ? `${cursorData[0].l}` : 'n/a'}
+              </td>
+            </tr>
+            <tr>
+              <th>Price C</th>
+              <td>
+                {cursorData[0] ? `${cursorData[0].c}` : 'n/a'}
               </td>
             </tr>
             <tr>
