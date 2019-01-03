@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   chartInit,
   chartSetCursor,
@@ -28,7 +28,6 @@ export default function Chart({ data, theme, chartType, zoom, setZoom, setChartV
   // hook that handles updating width and height according to current dimensions
   // supporting window resize
   const [width, height] = useDimensions(contentRef);
-  const [devicePixelRatio] = useState(window.devicePixelRatio);
 
   // prepare handlers for mouse interactions
   const wheelHandler = mouseHandlerZoom(zoom, setZoom);
@@ -48,7 +47,6 @@ export default function Chart({ data, theme, chartType, zoom, setZoom, setChartV
   const chartState = {
     width,
     height,
-    devicePixelRatio,
     zoom,
     offset,
     config,
@@ -62,8 +60,8 @@ export default function Chart({ data, theme, chartType, zoom, setZoom, setChartV
     chartInit(
       data,
       {
-        base: canvasBaseRef.current.getContext("2d"),
-        scale: canvasScaleRef.current.getContext("2d"),
+        base: canvasBaseRef.current,
+        scale: canvasScaleRef.current,
       },
       chartState
     );
@@ -87,15 +85,11 @@ export default function Chart({ data, theme, chartType, zoom, setZoom, setChartV
   return (
     <div className="Chart" ref={contentRef}>
       <canvas
-        width={width * devicePixelRatio}
-        height={height * devicePixelRatio}
         ref={canvasBaseRef}
         className="Chart-canvas"
         style={{ width, height }}
       />
       <canvas
-        width={width * devicePixelRatio}
-        height={height * devicePixelRatio}
         ref={canvasScaleRef}
         className="Chart-canvas-scale"
         style={{ width, height }}

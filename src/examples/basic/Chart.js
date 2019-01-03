@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   chartInit,
   chartDraw,
@@ -27,12 +27,9 @@ export default function Chart({ data, theme, zoom }) {
   // use predefined style, you can use your own as well
   const chartTheme = chartThemes()[theme];
 
-  const [devicePixelRatio] = useState(window.devicePixelRatio);
-
   const chartState = {
     width,
     height,
-    devicePixelRatio,
     zoom,
     offset: 0,
     config,
@@ -47,8 +44,8 @@ export default function Chart({ data, theme, zoom }) {
     chartInit(
       data,
       {
-        base: canvasBaseRef.current.getContext("2d"),
-        scale: canvasScaleRef.current.getContext("2d"),
+        base: canvasBaseRef.current,
+        scale: canvasScaleRef.current,
       },
       chartState,
     );
@@ -60,15 +57,11 @@ export default function Chart({ data, theme, zoom }) {
   return (
     <div className="Chart" ref={contentRef}>
       <canvas
-        width={width * devicePixelRatio}
-        height={height * devicePixelRatio}
         ref={canvasBaseRef}
         className="Chart-canvas"
         style={{ width, height }}
       />
       <canvas
-        width={width * devicePixelRatio}
-        height={height * devicePixelRatio}
         ref={canvasScaleRef}
         className="Chart-canvas-scale"
         style={{ width, height }}
