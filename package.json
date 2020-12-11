@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@talkrz/price-chart": "^0.14.0",
+    "@talkrz/price-chart": "^0.15.0",
     "gh-pages": "^2.0.1",
     "react": "^16.7.0-alpha.2",
     "react-dom": "^16.7.0-alpha.2",
